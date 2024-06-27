@@ -2,7 +2,7 @@
 
 set -e
 
-chmod -R 755 /vol/web /vol/static
+chmod -R 755 /vol/web/static /vol/web/media
 
 python manage.py wait_for_db
 python manage.py collectstatic --noinput

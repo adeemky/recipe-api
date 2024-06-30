@@ -39,12 +39,16 @@ class ModelTests(TestCase):
             get_user_model().objects.create_user("", "test123")
 
     def test_create_superuser(self):
-        user = get_user_model().objects.create_superuser("test@example.com", "test123")
+        user = get_user_model().objects.create_superuser(
+            "test@example.com",
+            "test123")
         self.assertTrue(user.is_superuser)
         self.assertTrue(user.is_staff)
 
     def test_create_recipe(self):
-        user = get_user_model().objects.create_user("test@example.com", "testpass123")
+        user = get_user_model().objects.create_user(
+            "test@example.com",
+            "testpass123")
 
         recipe = models.Recipe.objects.create(
             user=user,
@@ -64,7 +68,10 @@ class ModelTests(TestCase):
 
     def test_create_ingredient(self):
         user = create_user()
-        ingredient = models.Ingredient.objects.create(user=user, name="Ingredient1")
+        ingredient = models.Ingredient.objects.create(
+            user=user,
+            name="Ingredient1"
+            )
 
         self.assertEqual(str(ingredient), ingredient.name)
 

@@ -3,9 +3,11 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
 from user.serializers import UserSerializer, AuthTokenSerializer
 
+
 # CREATE USER
 class CreateUserView(generics.CreateAPIView):
     serializer_class = UserSerializer
+
 
 # MODIFY USER
 class ManageUserView(generics.RetrieveUpdateAPIView):
@@ -16,8 +18,8 @@ class ManageUserView(generics.RetrieveUpdateAPIView):
     def get_object(self):
         return self.request.user
 
+
 # LOGIN / GET TOKEN
 class CreateTokenView(ObtainAuthToken):
     serializer_class = AuthTokenSerializer
     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
-

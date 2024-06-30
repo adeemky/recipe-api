@@ -80,7 +80,9 @@ class PrivateRecipeAPITests(TestCase):
         self.assertEqual(res.data, serializer.data)
 
     def test_recipe_list_limitied_to_user(self):
-        other_user = create_user(email="other@example.com", password="password123")
+        other_user = create_user(
+            email="other@example.com", password="password123"
+            )
 
         create_recipe(user=other_user)
         create_recipe(user=self.user)
